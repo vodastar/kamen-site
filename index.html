@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камень</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #2a2520;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stone-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+            transition: all 0.4s ease;
+        }
+        
+        .stone-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.7);
+        }
+        
+        .stone-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(0.95) contrast(1.05);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
+        }
+        
+        .counter {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 10px 18px;
+            border-radius: 25px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .counter-number {
+            font-weight: 400;
+            color: #fff;
+        }
+        
+        .donate-corner {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 14px 24px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 300;
+        }
+        
+        .donate-corner:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .donate-corner::before {
+            content: "🍵 ";
+        }
+        
+        @media (max-width: 600px) {
+            .counter {
+                font-size: 12px;
+                padding: 8px 14px;
+                top: 15px;
+                left: 15px;
+            }
+            .donate-corner {
+                font-size: 13px;
+                padding: 12px 20px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stone-container">
+        <img src="https://i.imgur.com/IAgRI3A.jpeg" alt="Камень" class="stone-image">
+        <div class="overlay"></div>
+        <div class="counter">
+            Этот камень смотрят <span class="counter-number" id="viewCount">1,247</span> человек
+        </div>
+    </div>
+
+    <a href="https://send.monobank.ua/jar/ТВОЙ_ИДЕНТИФИКАТОР" target="_blank" class="donate-corner">
+        На чай разработчику
+    </a>
+
+    <script>
+        let count = localStorage.getItem('stoneViews') || 1247;
+        count = parseInt(count) + Math.floor(Math.random() * 3) + 1;
+        localStorage.setItem('stoneViews', count);
+        document.getElementById('viewCount').textContent = count.toLocaleString('ru-RU');
+    </script>
+</body>
+</html>
