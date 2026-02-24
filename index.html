@@ -77,33 +77,6 @@
             color: #fff;
         }
         
-        .donate-corner {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            padding: 14px 24px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 14px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-weight: 300;
-        }
-        
-        .donate-corner:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-        
-        .donate-corner::before {
-            content: "🍵 ";
-        }
-        
         @media (max-width: 600px) {
             .counter {
                 font-size: 12px;
@@ -111,27 +84,17 @@
                 top: 15px;
                 left: 15px;
             }
-            .donate-corner {
-                font-size: 13px;
-                padding: 12px 20px;
-                bottom: 20px;
-                right: 20px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="stone-container">
-        <img src="https://i.imgur.com/IAgRI3A.jpeg" alt="Камень" class="stone-image">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Камень" class="stone-image">
         <div class="overlay"></div>
         <div class="counter">
             Этот камень смотрят <span class="counter-number" id="viewCount">1,247</span> человек
         </div>
     </div>
-
-    <a href="https://send.monobank.ua/jar/ТВОЙ_ИДЕНТИФИКАТОР" target="_blank" class="donate-corner">
-        На чай разработчику
-    </a>
 
     <script>
         let count = localStorage.getItem('stoneViews') || 1247;
